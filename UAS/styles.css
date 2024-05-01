@@ -1,0 +1,425 @@
+.hero {
+  width: 80%;
+  margin: auto;
+}
+
+/* Small devices (phones) */
+@media only screen and (max-width: 600px) {
+  /* Add styles for small screens here */
+}
+
+.NavBar {
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+}
+
+.NavBar img {
+  width: 90px;
+  height: 90px;
+}
+
+#toggle-audio {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 30px;
+  height: 30px;
+  background-image: url("asset/volume.png"); /* URL to your icon image */
+  background-size: cover;
+  transition: background-image 0.3s ease-in-out; /* Smoother animation with ease-in-out timing function */
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* Semi-transparent black overlay */
+  transition: opacity 0.3s ease-in-out; /* Fade animation */
+  opacity: 0; /* Initially hidden */
+}
+
+.icon.muted::before {
+  opacity: 1; /* Show the overlay when audio is muted */
+}
+
+.icon.muted {
+  background-image: url("asset/mute.png"); /* URL to your muted icon image */
+}
+
+#volume-control-container {
+  position: relative;
+  top: 95px;
+  right: calc(50% + -95px); /* Adjust distance from icon */
+  transform: translateY(-50%);
+  width: 20px; /* Adjust width as needed */
+  height: 100px; /* Adjust height as needed */
+  background-color: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out; /* Animation for expanding/collapsing */
+  z-index: 1; /* Ensure the container is behind other elements */
+}
+#volume-control-container.visible {
+  display: block;
+  width: 15px; /* Adjust width as needed */
+}
+
+#volume-control-handle {
+  position: absolute;
+  width: 20px; /* Adjust handle width as needed */
+  height: 20px; /* Adjust handle height as needed */
+  background-color: #666;
+  border-radius: 50%;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Ensure the handle appears in front of other elements */
+  transition: top 0.1s ease, background-color 0.3s ease; /* Smoother transition for dragging */
+}
+
+#volume-control-container.invisible {
+  width: 0;
+  overflow: hidden;
+}
+
+/* Add animations for mute and unmute here */
+@keyframes muteAnimation {
+  /* Define mute animation */
+}
+
+@keyframes unmuteAnimation {
+  /* Define unmute animation */
+}
+
+ul {
+  flex: 1;
+  text-align: right;
+}
+ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 25px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 0 10px;
+  position: relative;
+}
+
+ul li a::after {
+  content: "";
+  width: 0;
+  height: 10px;
+  background: orangered;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -80px;
+  transition: 0.5s;
+}
+
+ul li a:hover:after {
+  width: 100%;
+}
+
+.navbar-icons img {
+  height: 25px;
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+.navbar-icons {
+  margin-left: 40px;
+}
+
+.banner {
+  display: flex;
+  margin-top: 80px;
+}
+
+.left-column,
+.right-column {
+  flex-basis: 50%;
+}
+
+.right-column img {
+  width: 100%;
+  position: relative;
+  bottom: 70px;
+  left: 40px;
+}
+
+.search-box {
+  width: 45%;
+  display: flex;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ddd;
+  margin: 10px 0 30px;
+}
+
+.search-box img {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.search-box input {
+  width: 100%;
+  margin-left: 15px;
+  font-size: 17px;
+  border: 0;
+  outline: none;
+}
+
+.left-column h1 {
+  font-size: 100px;
+}
+
+.left-column h3 {
+  font-size: 30px;
+  position: relative;
+  bottom: 50px;
+}
+
+.btn button {
+  padding: 7px 30px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid orangered;
+  border-radius: 20px;
+  cursor: pointer;
+  color: orangered;
+  background: transparent;
+}
+
+.btn .primary-btn {
+  background: linear-gradient(orangered, orangered);
+  box-shadow: 0 2px 15px rgba(248, 38, 103, 0.26);
+  color: white;
+  margin-bottom: 50px;
+}
+
+.social-icons {
+  width: 250px;
+  text-align: center;
+  opacity: 0.4;
+  position: relative;
+  margin-left: 160px;
+}
+
+.social-icons img {
+  height: 20px;
+  margin: 0 14px;
+  margin-bottom: 1px;
+}
+
+.social-icons::after {
+  content: "";
+  width: 150px;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: -160px;
+  top: 10px;
+}
+
+.portfolio {
+  background-color: black;
+  padding: 1px;
+  margin: 5px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10em;
+  grid-template-columns: auto 1fr; /* Two columns: auto for the image width, 1fr for the remaining space */
+}
+
+.appear-section {
+  opacity: 0; /* Initially hide the section */
+  transition: opacity 1s; /* Apply transition for smooth appearance */
+}
+
+.appeared {
+  opacity: 1; /* Show the section */
+}
+
+.about-title {
+  position: relative;
+  font-size: 50px;
+  top: 50px;
+  left: 140px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.img-box img {
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  margin-left: 80px;
+  margin-bottom: 80px;
+  margin-right: 20px; /* Add some space between the image and paragraph */
+  box-shadow: 0 0 25px orangered, 0 0 50px orangered;
+}
+
+.about-p {
+  font-size: 20px;
+  color: white;
+  position: absolute; /* Position the paragraph */
+  top: 1100px; /* Adjust the distance from the top */
+  right: 600px; /* Adjust the distance from the left */
+  width: 500px; /* Set the width of the paragraph */
+  line-height: 1.5; /* Adjust the line height */
+}
+
+.about-p2 {
+  font-size: 20px;
+  color: white;
+  position: absolute; /* Position the paragraph */
+  top: 1100px; /* Adjust the distance from the top */
+  right: 80px; /* Adjust the distance from the left */
+  width: 500px; /* Set the width of the paragraph */
+  line-height: 1.5; /* Adjust the line height */
+}
+
+.works {
+  position: relative;
+  font-size: 50px;
+  top: 50px;
+  left: 140px;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.column img {
+  width: 80%; /* Make the image fill its container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50px; /* Add rounded corners */
+  overflow: hidden; /* Hide any parts of the image that overflow the rounded corners */
+}
+
+.column p {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.pop-img {
+  transition: transform 0.8s ease; /* Add a transition for smooth scaling */
+}
+
+.pop-img:hover {
+  transform: scale(1.1); /* Scale the image on hover */
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 40px 0;
+  background-color: black;
+}
+
+.footer .social {
+  text-align: center;
+  padding-bottom: 25px;
+  color: white;
+}
+
+.footer .social a {
+  font-size: 24px;
+  color: white;
+  border: 2px solid orangered;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 8px;
+  box-shadow: inset 0 0 10px orangered, 0 0 10px orangered;
+  transition: 0.3s ease;
+}
+
+.footer .social a:hover {
+  transform: scale(1.2) translateY(-10px);
+  color: orangered;
+  border: 2px solid orangered;
+}
+
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.footer ul li a {
+  color: white;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
+}
+
+.footer ul li a:hover {
+  border-bottom: 3px solid orangered;
+}
+
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.footer .copyright {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+}
+
+.rounded-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px; /* Adjust the border radius to make the button more or less rounded */
+  background-color: white; /* Button background color */
+  color: black; /* Default button text color */
+  text-decoration: none; /* Remove default underline */
+  transition: transform 0.3s, color 0.3s; /* Add transitions for smooth scaling and color change */
+  position: absolute; /* Position the button */
+  top: 1500px; /* Adjust the top position */
+  right: 120px; /* Adjust the left position */
+}
+
+.rounded-button:hover {
+  transform: scale(1.1); /* Scale the button on hover */
+  background-color: orangered; /* Button background color on hover */
+  color: white; /* Text color on hover */
+}
